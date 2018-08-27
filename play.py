@@ -19,4 +19,4 @@ bootstrap = Bootstrap(
     models=models
 )
 
-bootstrap.preprocess()
+bootstrap.train()
