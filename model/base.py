@@ -14,7 +14,7 @@ _MODEL_STATUS_FILENAME = 'model_status.yaml'
 
 class BasicChatbotModel(BasicModel):
     def __init__(self, name: str = 'basic_chatbot_model'):
-        super(BasicChatbotModel, self).__init__(name)
+        super(BasicChatbotModel, self).__init__()
 
         self.enc_length = None
         self.dec_length = None

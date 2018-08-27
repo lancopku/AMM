@@ -7,7 +7,7 @@ import math
 
 class AutoEncoderModel(Seq2SeqModel):
     def __init__(self, name: str = 'auto'):
-        super(AutoEncoderModel, self).__init__(name)
+        super(AutoEncoderModel, self).__init__()
 
         self.q_dec = None
         self.q_target = None

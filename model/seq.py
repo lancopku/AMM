@@ -30,7 +30,7 @@ class Projection:
 
 class Seq2SeqModel(BasicChatbotModel):
     def __init__(self, name: str = 'seq'):
-        super(Seq2SeqModel, self).__init__(name)
+        super(Seq2SeqModel, self).__init__()
         self.q_enc = None
         self.a_dec = None
         self.a_target = None
@@ -166,10 +166,10 @@ class Seq2SeqModel(BasicChatbotModel):
         self._restore_checkpoint()
 
         print('Start testing ...')
-        # batches = self._get_batches('test')
+        batches = self._get_batches('test')
         test_samples = [qa for qa, _ in self.dataset['test_samples']]
         test_samples_text = [text for _, text in self.dataset['test_samples']]
-        batches = [self._create_batch(test_samples)]
+        # batches = [self._create_batch(test_samples)]
         all_inputs = []
         all_outputs = []
         all_references = []
@@ -185,10 +185,10 @@ class Seq2SeqModel(BasicChatbotModel):
             all_inputs += np.transpose(np.array(batch.q_enc_seq)).tolist()
             all_references += np.transpose(np.array(batch.a_target_seq)).tolist()
 
-        self._write_test_samples_literal(test_samples_text, all_outputs)
-        self._write_test_samples_results(all_outputs)
+        # self._write_test_samples_literal(test_samples_text, all_outputs)
+        # self._write_test_samples_results(all_outputs)
         # self._wirte_test_literal(all_inputs, all_outputs)
-        # self._write_evaluation_results(all_outputs, all_references)
+        self._write_evaluation_results(all_outputs, all_references)
 
     def _write_test_samples_results(self, outputs: List[List[int]]):
         results = {}
